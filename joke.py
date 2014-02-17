@@ -30,7 +30,7 @@ def joke(first, last):
     joke = data['value']['joke']
 
     # Save it in MongoDB
-    joke_id = jokes.insert(joke)
+    joke_id = jokes.insert(data)
 
     # Display the joke
     requests.get("http://intu-websocket.herokuapp.com/send/" + joke)
