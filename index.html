@@ -1,0 +1,23 @@
+<html>
+
+  <head>
+    <script>
+      var host = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(host);
+
+      ws.onmessage = function (event) {
+        var li = document.createElement('li');
+        li.innerHTML = event.data;
+
+        var output = document.querySelector('#output');
+        output.insertBefore(li, output.childNodes[0]);
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Output</h1>
+    <ul id='output'></ul>
+  </body>
+
+</html>
