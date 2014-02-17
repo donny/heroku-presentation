@@ -8,4 +8,9 @@ def joke(first, last):
     payload = {'firstName': first, 'lastName': last}
     r = requests.get("http://api.icndb.com/jokes/random", params=payload)
     data = r.json()
-    return data['value']['joke']
+
+    joke = data['value']['joke']
+
+    requests.get("http://intu-websocket.herokuapp.com/send/" + joke)
+
+    return joke
