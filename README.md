@@ -1,4 +1,18 @@
-heroku-presentation
-===================
+heroku-presentation jokes
+=============================
 
-Code for my presentation on Heroku
+# Running
+
+``` bash
+pip freeze > requirements.txt
+foreman start
+```
+
+# Running on Heroku
+
+``` bash
+heroku apps:create appname
+heroku addons:add mongohq
+git push heroku master
+heroku open
+```
