@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'faye/websocket'
 require 'json'
+require 'cgi'
 
 Faye::WebSocket.load_adapter('thin')
 
@@ -30,6 +31,8 @@ App = lambda do |env|
     elsif env["REQUEST_PATH"] =~ /\/send\// # If it starts with /send/
       message = /\/send\/(.*)/.match(env["REQUEST_PATH"])[1]
       puts "Received message: " + message
+
+      message = CGI::unescape(message) # Unescape the HTML string to normal one
 
       CLIENTS.each {|client| client.send(message) }
 
