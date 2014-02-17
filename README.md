@@ -11,7 +11,7 @@ foreman start
 # Running on Heroku
 
 ``` bash
-heroku create
+heroku apps:create appname
 heroku labs:enable websockets
 git push heroku master
 heroku open
